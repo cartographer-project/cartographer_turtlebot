@@ -15,13 +15,13 @@
 -->
 
 <launch>
-  <param name="robot_description"
-    textfile="$(find cartographer_turtlebot2)/urdf/turtlebot2.urdf" />
+  <include file="$(find turtlebot_bringup)/launch/minimal.launch" />
+  <include file="$(find openni2_launch)/launch/openni2.launch" />
 
-  <node name="cartographer" pkg="cartographer_ros"
-      type="cartographer_node" args="
-          -configuration_directory
-              $(find cartographer_turtlebot2)/configuration_files
-          -configuration_basename turtlebot2.lua"
-      output="screen" />
+  <node name="squash_depth_camera" pkg="depthimage_to_laserscan"
+      type="depthimage_to_laserscan">
+    <remap from="image" to="/camera/depth/image_raw" />
+  </node>
+
+  <include file="$(find cartographer_turtlebot2)/launch/turtlebot2.launch" />
 </launch>

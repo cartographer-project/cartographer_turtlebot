@@ -18,7 +18,6 @@ set -o errexit
 set -o verbose
 
 sudo apt-get update
-sudo apt-get install -y tmux
 
 source /ros_entrypoint.sh
 
