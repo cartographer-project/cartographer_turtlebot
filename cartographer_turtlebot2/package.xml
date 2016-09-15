@@ -36,4 +36,5 @@
   <depend>kobuki_core</depend>
   <depend>openni2_launch</depend>
   <depend>turtlebot_bringup</depend>
+  <depend>urg_node</depend>
 </package>
