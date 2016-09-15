@@ -17,7 +17,7 @@ include "map_builder.lua"
 options = {
   map_builder = MAP_BUILDER,
   map_frame = "map",
-  tracking_frame = "base_link",
+  tracking_frame = "gyro_link",
   odom_frame = "odom",
   provide_odom_frame = false,
   use_odometry_data = true,
@@ -28,8 +28,8 @@ options = {
   use_horizontal_laser = true,
   use_horizontal_multi_echo_laser = false,
   horizontal_laser_min_range = 0.,
-  horizontal_laser_max_range = 30.,
-  horizontal_laser_missing_echo_ray_length = 5.,
+  horizontal_laser_max_range = 4.,
+  horizontal_laser_missing_echo_ray_length = 1.,
   num_lasers_3d = 0,
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.3,
@@ -37,7 +37,8 @@ options = {
 }
 
 options.map_builder.use_trajectory_builder_2d = true
-options.map_builder.trajectory_builder_2d.use_imu_data = false
+options.map_builder.trajectory_builder_2d.use_imu_data = true
 options.map_builder.trajectory_builder_2d.use_online_correlative_scan_matching = true
+options.map_builder.trajectory_builder_2d.motion_filter.max_angle_radians = math.rad(0.25)
 
 return options
