@@ -21,11 +21,13 @@ Purpose
 
 `Cartographer`_ is a system that provides real-time simultaneous localization
 and mapping `SLAM`_ across multiple platforms and sensor configurations. This
-repository provides Cartographer SLAM for TurtleBot 2 via `Cartographer ROS`_.
+repository provides Cartographer SLAM for `TurtleBot 2`_ via
+`Cartographer ROS`_.
 
 .. _Cartographer: https://github.com/googlecartographer/cartographer
 .. _Cartographer ROS: https://github.com/googlecartographer/cartographer_ros
 .. _SLAM: https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping
+.. _TurtleBot 2: http://www.turtlebot.com/
 
 Contributing
 ============
