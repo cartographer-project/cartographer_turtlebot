@@ -23,11 +23,11 @@
               $(find cartographer_turtlebot2)/configuration_files
           -configuration_basename turtlebot2.lua"
       output="screen">
-      <remap from="imu" to="/flat_world_imu" />
   </node>
   <node name="flat_world_imu" pkg="cartographer_turtlebot2"
       type="flat_world_imu_node" output="screen">
-      <remap from="imu" to="/mobile_base/sensors/imu_data_raw" />
+      <remap from="~/imu" to="/mobile_base/sensors/imu_data_raw" />
+      <remap from="~/flat_world_imu" to="/imu" />
   </node>
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find cartographer_turtlebot2

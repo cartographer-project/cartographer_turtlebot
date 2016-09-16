@@ -19,6 +19,7 @@
 
 namespace {
 
+constexpr double kFakeGravity = 9.8;
 constexpr int kSubscriberQueueSize = 150;
 constexpr char kImuTopic[] = "imu";
 constexpr char kFlatWorldImuTopic[] = "flat_world_imu";
@@ -26,7 +27,7 @@ constexpr char kFlatWorldImuTopic[] = "flat_world_imu";
 }  // namespace
 
 int main(int argc, char** argv) {
-  ::ros::init(argc, argv, "flat_world_imu_node");
+  ::ros::init(argc, argv, "flat_world_imu");
 
   ros::Time last_time;
   ::ros::NodeHandle node_handle("~");
@@ -36,14 +37,17 @@ int main(int argc, char** argv) {
       kImuTopic, kSubscriberQueueSize,
       boost::function<void(const sensor_msgs::Imu::ConstPtr& msg)>(
           [&](const sensor_msgs::Imu::ConstPtr& msg) {
-            if (!last_time.isZero()) {
-              if (msg->header.stamp > last_time) {
-                sensor_msgs::Imu flat_world_imu = *msg;
-                flat_world_imu.linear_acceleration.x = 0.;
-                flat_world_imu.linear_acceleration.y = 0.;
-                flat_world_imu.linear_acceleration.z = 10.;
-                publisher.publish(flat_world_imu);
-              }
+            // The 'imu_data_raw' topic of the Kobuki base will at times publish
+            // IMU messages out of order. These out of order messages must be
+            // dropped.
+            if (last_time.isZero() || msg->header.stamp > last_time) {
+              sensor_msgs::Imu flat_world_imu = *msg;
+              // TODO(damonkohler): This relies on the z-axis alignment of the
+              // IMU with the Kobuki base.
+              flat_world_imu.linear_acceleration.x = 0.;
+              flat_world_imu.linear_acceleration.y = 0.;
+              flat_world_imu.linear_acceleration.z = kFakeGravity;
+              publisher.publish(flat_world_imu);
             }
             last_time = msg->header.stamp;
           }));
@@ -51,6 +55,4 @@ int main(int argc, char** argv) {
   ::ros::start();
   ::ros::spin();
   ::ros::shutdown();
-
-  return 0;
 }

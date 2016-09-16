@@ -30,6 +30,8 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <build_depend>g++-static</build_depend>
+
   <depend>cartographer_ros</depend>
   <depend>depthimage_to_laserscan</depend>
   <depend>kobuki</depend>
