@@ -15,6 +15,8 @@
 -->
 
 <launch>
+  <arg name="configuration_basename" />
+
   <param name="robot_description"
     textfile="$(find cartographer_turtlebot2)/urdf/turtlebot2.urdf" />
 
@@ -22,8 +24,9 @@
       type="cartographer_node" args="
           -configuration_directory
               $(find cartographer_turtlebot2)/configuration_files
-          -configuration_basename turtlebot2.lua"
-      output="screen" />
+          -configuration_basename $(arg configuration_basename)"
+      output="screen">
+    <remap from="points2" to="/camera/depth/points" />
   </node>
   <node name="flat_world_imu_node" pkg="cartographer_turtlebot2"
       type="flat_world_imu_node" output="screen">

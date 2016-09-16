@@ -224,8 +224,8 @@ Visualization Manager:
       Enabled: true
       Map frame: map
       Name: Submaps
-      Submap query service: /cartographer_node/submap_query
-      Topic: /cartographer_node/submap_list
+      Submap query service: /submap_query
+      Topic: /submap_list
       Tracking frame: base_link
       Unreliable: false
       Value: true
