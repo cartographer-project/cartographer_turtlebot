@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM cartographer_ros
-COPY . cartographer_turtlebot
-RUN cartographer_turtlebot/scripts/install.bash
-COPY scripts/ros_entrypoint.sh /
+sudo: required
+services: docker
+install:
+  - git clone https://github.com/googlecartographer/cartographer_ros.git
+  - docker build cartographer_ros -t cartographer_ros
+  - rm -rf cartographer_ros
+script: docker build ${TRAVIS_BUILD_DIR} -t cartographer_turtlebot

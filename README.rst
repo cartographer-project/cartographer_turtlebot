@@ -16,6 +16,8 @@
 Cartographer ROS for TurtleBot 2
 ================================
 
+|build|
+
 Purpose
 =======
 
@@ -36,3 +38,8 @@ You can find information about contributing to Cartographer's TurtleBot support
 at our `Contribution page`_.
 
 .. _Contribution page: https://github.com/googlecartographer/cartographer_turtlebot/blob/master/CONTRIBUTING.md
+
+.. |build| image:: https://travis-ci.org/googlecartographer/cartographer_turtlebot.svg?branch=master
+    :alt: Build Status
+    :scale: 100%
+    :target: https://travis-ci.org/googlecartographer/cartographer_turtlebot
