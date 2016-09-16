@@ -17,7 +17,7 @@ include "map_builder.lua"
 options = {
   map_builder = MAP_BUILDER,
   map_frame = "map",
-  tracking_frame = "base_link",
+  tracking_frame = "gyro_link",
   odom_frame = "odom",
   provide_odom_frame = false,
   use_odometry_data = true,
@@ -37,7 +37,8 @@ options = {
 }
 
 options.map_builder.use_trajectory_builder_2d = true
-options.map_builder.trajectory_builder_2d.use_imu_data = false
+options.map_builder.trajectory_builder_2d.use_imu_data = true
 options.map_builder.trajectory_builder_2d.use_online_correlative_scan_matching = true
+options.map_builder.trajectory_builder_2d.motion_filter.max_angle_radians = math.rad(0.25)
 
 return options

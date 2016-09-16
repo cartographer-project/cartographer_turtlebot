@@ -30,11 +30,16 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <build_depend>g++-static</build_depend>
+
   <depend>cartographer_ros</depend>
   <depend>depthimage_to_laserscan</depend>
   <depend>kobuki</depend>
   <depend>kobuki_core</depend>
+  <depend>message_runtime</depend>
   <depend>openni2_launch</depend>
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
   <depend>turtlebot_bringup</depend>
   <depend>urg_node</depend>
 </package>
