@@ -18,16 +18,16 @@
   <param name="robot_description"
     textfile="$(find cartographer_turtlebot2)/urdf/turtlebot2.urdf" />
 
-  <node name="cartographer" pkg="cartographer_ros"
+  <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory
               $(find cartographer_turtlebot2)/configuration_files
           -configuration_basename turtlebot2.lua"
-      output="screen">
+      output="screen" />
   </node>
-  <node name="flat_world_imu" pkg="cartographer_turtlebot2"
+  <node name="flat_world_imu_node" pkg="cartographer_turtlebot2"
       type="flat_world_imu_node" output="screen">
-      <remap from="~/imu" to="/mobile_base/sensors/imu_data_raw" />
-      <remap from="~/flat_world_imu" to="/imu" />
+    <remap from="imu_in" to="/mobile_base/sensors/imu_data_raw" />
+    <remap from="imu_out" to="/imu" />
   </node>
 </launch>
