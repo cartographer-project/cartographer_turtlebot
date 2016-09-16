@@ -21,7 +21,7 @@
       type="cartographer_node" args="
           -configuration_directory
               $(find cartographer_turtlebot2)/configuration_files
-          -configuration_basename turtlebot2.lua"
+          -configuration_basename turtlebot2_2d.lua"
       output="screen" />
   <node name="flat_world_imu_node" pkg="cartographer_turtlebot2"
       type="flat_world_imu_node" output="screen">

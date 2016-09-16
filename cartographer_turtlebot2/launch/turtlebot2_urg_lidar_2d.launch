@@ -20,5 +20,7 @@
   <param name="urg_node/frame_id" value="horizontal_laser_link" />
   <node name="urg_node" pkg="urg_node" type="urg_node" />
 
-  <include file="$(find cartographer_turtlebot2)/launch/turtlebot2.launch" />
+  <include file="$(find cartographer_turtlebot2)/launch/turtlebot2.launch">
+    <arg name="configuration_basename" value="turtlebot2_2d.lua" />
+  </include>
 </launch>
