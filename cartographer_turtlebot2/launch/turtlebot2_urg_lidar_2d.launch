@@ -15,9 +15,7 @@
 -->
 
 <launch>
-  <include file="$(find turtlebot_bringup)/launch/minimal.launch" />
-
-  <param name="urg_node/frame_id" value="horizontal_laser_link" />
+  <param name="urg_node/frame_id" value="plate_top_link" />
   <node name="urg_node" pkg="urg_node" type="urg_node" />
 
   <include file="$(find cartographer_turtlebot2)/launch/turtlebot2.launch">
