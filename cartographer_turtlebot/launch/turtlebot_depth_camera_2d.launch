@@ -15,10 +15,13 @@
 -->
 
 <launch>
-  <param name="urg_node/frame_id" value="plate_top_link" />
-  <node name="urg_node" pkg="urg_node" type="urg_node" />
+  <include file="$(find turtlebot_bringup)/launch/3dsensor.launch" />
+  <!-- We override the parameter here to remove the leading slash which should
+       not be there according to tf2 naming rules. -->
+  <param name="/depthimage_to_laserscan/output_frame_id"
+      value="camera_depth_frame" />
 
-  <include file="$(find cartographer_turtlebot2)/launch/turtlebot2.launch">
-    <arg name="configuration_basename" value="turtlebot2_2d.lua" />
+  <include file="$(find cartographer_turtlebot)/launch/turtlebot.launch">
+    <arg name="configuration_basename" value="turtlebot_depth_camera_2d.lua" />
   </include>
 </launch>
