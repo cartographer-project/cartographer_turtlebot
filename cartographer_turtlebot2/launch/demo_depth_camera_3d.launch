@@ -21,13 +21,35 @@
       type="cartographer_node" args="
           -configuration_directory
               $(find cartographer_turtlebot2)/configuration_files
-          -configuration_basename turtlebot2_2d.lua"
+          -configuration_basename turtlebot2_3d.lua"
       output="screen" />
+
   <node name="flat_world_imu_node" pkg="cartographer_turtlebot2"
       type="flat_world_imu_node" output="screen">
     <remap from="imu_in" to="/mobile_base/sensors/imu_data_raw" />
     <remap from="imu_out" to="/imu" />
   </node>
+
+  <node pkg="nodelet" type="nodelet" name="image_processing_manager"
+        args="manager" />
+  <node pkg="nodelet" type="nodelet" name="metricizer"
+        args="load depth_image_proc/convert_metric image_processing_manager">
+    <remap from="image_raw" to="/camera/depth/image_raw" />
+    <remap from="image" to="/image" />
+  </node>
+  <node pkg="nodelet" type="nodelet" name="rectifier"
+        args="load image_proc/rectify image_processing_manager">
+    <remap from="image_mono" to="/image" />
+    <remap from="camera_info" to="/camera/depth/camera_info" />
+    <remap from="image_rect" to="/image_rect" />
+  </node>
+  <node pkg="nodelet" type="nodelet" name="cloudifier"
+        args="load depth_image_proc/point_cloud_xyz image_processing_manager">
+    <remap from="camera_info" to="/camera/depth/camera_info" />
+    <remap from="image_rect" to="/image_rect" />
+    <remap from="points" to="/points2" />
+  </node>
+
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find cartographer_turtlebot2
           )/configuration_files/demo_turtlebot2.rviz" />
