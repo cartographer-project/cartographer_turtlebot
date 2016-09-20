@@ -28,8 +28,8 @@ options = {
   publish_occupancy_grid = false,
   use_horizontal_laser = true,
   use_horizontal_multi_echo_laser = false,
-  horizontal_laser_min_range = 0.,
-  horizontal_laser_max_range = 30.,
+  horizontal_laser_min_range = 0.1,
+  horizontal_laser_max_range = 8.,
   horizontal_laser_missing_echo_ray_length = 5.,
   num_lasers_3d = 0,
   lookup_transform_timeout_sec = 0.2,
@@ -40,6 +40,6 @@ options = {
 MAP_BUILDER.use_trajectory_builder_2d = true
 TRAJECTORY_BUILDER_2D.use_imu_data = true
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
-TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.25)
+TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.1)
 
 return options
