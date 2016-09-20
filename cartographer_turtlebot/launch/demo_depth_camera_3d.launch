@@ -20,11 +20,11 @@
   <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory
-              $(find cartographer_turtlebot2)/configuration_files
-          -configuration_basename turtlebot2_3d.lua"
+              $(find cartographer_turtlebot)/configuration_files
+          -configuration_basename turtlebot_depth_camera_3d.lua"
       output="screen" />
 
-  <node name="flat_world_imu_node" pkg="cartographer_turtlebot2"
+  <node name="flat_world_imu_node" pkg="cartographer_turtlebot"
       type="flat_world_imu_node" output="screen">
     <remap from="imu_in" to="/mobile_base/sensors/imu_data_raw" />
     <remap from="imu_out" to="/imu" />
@@ -51,8 +51,8 @@
   </node>
 
   <node name="rviz" pkg="rviz" type="rviz" required="true"
-      args="-d $(find cartographer_turtlebot2
-          )/configuration_files/demo_turtlebot2.rviz" />
+      args="-d $(find cartographer_turtlebot
+          )/configuration_files/demo_turtlebot.rviz" />
   <node name="playbag" pkg="rosbag" type="play"
       args="--clock $(arg bag_filename)" />
 </launch>

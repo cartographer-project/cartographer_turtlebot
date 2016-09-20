@@ -16,10 +16,10 @@
 -->
 
 <package format="2">
-  <name>cartographer_turtlebot2</name>
+  <name>cartographer_turtlebot</name>
   <version>1.0.0</version>
   <description>
-    TurtleBot 2 configurations and launch files.
+    Cartographer configurations and launch files for TurtleBots.
   </description>
   <maintainer email="google-cartographer@googlegroups.com">
     The Cartographer Authors

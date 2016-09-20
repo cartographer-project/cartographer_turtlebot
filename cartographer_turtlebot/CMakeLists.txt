@@ -14,7 +14,7 @@
 
 cmake_minimum_required(VERSION 2.8.3)
 
-project(cartographer_turtlebot2)
+project(cartographer_turtlebot)
 
 set(PACKAGE_DEPENDENCIES
   roscpp
