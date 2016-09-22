@@ -37,9 +37,9 @@ options = {
   pose_publish_period_sec = 5e-3,
 }
 
-options.map_builder.use_trajectory_builder_2d = true
-options.map_builder.trajectory_builder_2d.use_imu_data = true
-options.map_builder.trajectory_builder_2d.use_online_correlative_scan_matching = true
-options.map_builder.trajectory_builder_2d.motion_filter.max_angle_radians = math.rad(0.25)
+MAP_BUILDER.use_trajectory_builder_2d = true
+TRAJECTORY_BUILDER_2D.use_imu_data = true
+TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
+TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.25)
 
 return options
