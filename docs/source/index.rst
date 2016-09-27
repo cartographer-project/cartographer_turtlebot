@@ -30,19 +30,6 @@ repository provides Cartographer SLAM for `TurtleBots`_ via
 .. _SLAM: https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping
 .. _TurtleBots: http://www.turtlebot.com/
 
-Contributing
-============
-
-You can find information about contributing to Cartographer's TurtleBot support
-at our `Contribution page`_.
-
-.. _Contribution page: https://github.com/googlecartographer/cartographer_turtlebot/blob/master/CONTRIBUTING.md
-
-.. |build| image:: https://travis-ci.org/googlecartographer/cartographer_turtlebot.svg?branch=master
-    :alt: Build Status
-    :scale: 100%
-    :target: https://travis-ci.org/googlecartographer/cartographer_turtlebot
-
 Building & Installation
 =======================
 
@@ -89,10 +76,10 @@ this case ``~/Downloads``, and use ``roslaunch`` to bring up the demo:
     # Launch the 2D LIDAR demo.
     roslaunch cartographer_turtlebot demo_lidar_2d.launch bag_filename:=${HOME}/Downloads/cartographer_turtlebot_demo.bag
 
-    # Launch the 2D RBGD demo.
+    # Launch the 2D depth camera demo.
     roslaunch cartographer_turtlebot demo_depth_camera_2d.launch bag_filename:=${HOME}/Downloads/cartographer_turtlebot_demo.bag
 
-    # Launch the 3D RGBD demo.
+    # Launch the 3D depth camera demo.
     roslaunch cartographer_turtlebot demo_depth_camera_3d.launch bag_filename:=${HOME}/Downloads/cartographer_turtlebot_demo.bag
 
 The launch files will bring up ``roscore`` and ``rviz`` automatically.

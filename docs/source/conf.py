@@ -253,7 +253,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'CartographerROS', u'Cartographer ROS for TurtleBots Documentation',
+    ('index', 'CartographerTurtlebot', u'Cartographer ROS for TurtleBots Documentation',
      u'The Cartographer Authors', 'Cartographer ROS for TurtleBots',
      'Provides ROS integration for Cartographer.', 'Miscellaneous'),
 ]
