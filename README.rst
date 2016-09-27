@@ -12,30 +12,30 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 
-================================
-Cartographer ROS for TurtleBot 2
-================================
+===============================
+Cartographer ROS for TurtleBots
+===============================
 
-|build|
+|build| |docs|
 
 Purpose
 =======
 
 `Cartographer`_ is a system that provides real-time simultaneous localization
 and mapping `SLAM`_ across multiple platforms and sensor configurations. This
-repository provides Cartographer SLAM for `TurtleBot 2`_ via
+repository provides Cartographer SLAM for `TurtleBots`_ via
 `Cartographer ROS`_.
 
 .. _Cartographer: https://github.com/googlecartographer/cartographer
 .. _Cartographer ROS: https://github.com/googlecartographer/cartographer_ros
 .. _SLAM: https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping
-.. _TurtleBot 2: http://www.turtlebot.com/
+.. _TurtleBots: http://www.turtlebot.com/
 
 Contributing
 ============
 
-You can find information about contributing to Cartographer's TurtleBot support
-at our `Contribution page`_.
+You can find information about contributing to Cartographer ROS's TurtleBot
+support at our `Contribution page`_.
 
 .. _Contribution page: https://github.com/googlecartographer/cartographer_turtlebot/blob/master/CONTRIBUTING.md
 
@@ -43,3 +43,8 @@ at our `Contribution page`_.
     :alt: Build Status
     :scale: 100%
     :target: https://travis-ci.org/googlecartographer/cartographer_turtlebot
+
+.. |docs| image:: https://readthedocs.org/projects/google-cartographer-ros-for-turtlebots/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/?badge=latest
