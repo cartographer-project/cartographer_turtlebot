@@ -31,6 +31,14 @@ repository provides Cartographer SLAM for `TurtleBots`_ via
 .. _SLAM: https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping
 .. _TurtleBots: http://www.turtlebot.com/
 
+Documentation
+=============
+
+You will find complete documentation for using Cartographer ROS with TurtleBots
+at `our Read the Docs site`_.
+
+.. _our Read the Docs site: https://google-cartographer-ros-for-turtlebots.readthedocs.io
+
 Contributing
 ============
 
