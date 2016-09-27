@@ -28,9 +28,9 @@ options = {
   publish_occupancy_grid = false,
   use_horizontal_laser = true,
   use_horizontal_multi_echo_laser = false,
-  horizontal_laser_min_range = 0.,
-  horizontal_laser_max_range = 30.,
-  horizontal_laser_missing_echo_ray_length = 5.,
+  horizontal_laser_min_range = 0.1,
+  horizontal_laser_max_range = 4.,
+  horizontal_laser_missing_echo_ray_length = 2.,
   num_lasers_3d = 0,
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.3,
@@ -40,6 +40,11 @@ options = {
 MAP_BUILDER.use_trajectory_builder_2d = true
 TRAJECTORY_BUILDER_2D.use_imu_data = true
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
-TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.25)
+TRAJECTORY_BUILDER_2D.motion_filter.max_time_seconds = 0.25
+TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.1)
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.covariance_scale = 1e-2
+TRAJECTORY_BUILDER_2D.submaps.num_laser_fans = 300
+SPARSE_POSE_GRAPH.optimize_every_n_scans = 300
+SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.8
 
 return options
