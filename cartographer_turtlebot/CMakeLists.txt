@@ -47,17 +47,12 @@ add_executable(flat_world_imu_node src/flat_world_imu_node_main.cc)
 target_link_libraries(flat_world_imu_node ${catkin_LIBRARIES})
 add_dependencies(flat_world_imu_node ${catkin_EXPORTED_TARGETS})
 
-install(TARGETS
-  flat_world_imu_node
+install(TARGETS flat_world_imu_node
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-install(DIRECTORY launch/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch/
-)
-
-install(DIRECTORY configuration_files/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/configuration_files/
+install(DIRECTORY launch configuration_files
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
