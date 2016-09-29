@@ -25,7 +25,6 @@ options = {
   use_constant_odometry_variance = true,
   constant_odometry_translational_variance = 1e-7,
   constant_odometry_rotational_variance = 1e-7,
-  publish_occupancy_grid = false,
   use_horizontal_laser = true,
   use_horizontal_multi_echo_laser = false,
   horizontal_laser_min_range = 0.1,
