@@ -38,14 +38,40 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_3d = true
-MAP_BUILDER.sparse_pose_graph.optimize_every_n_scans = 320
-MAP_BUILDER.sparse_pose_graph.constraint_builder.sampling_ratio = 0.03
-MAP_BUILDER.sparse_pose_graph.optimization_problem.ceres_solver_options.max_num_iterations = 10
--- Reuse the coarser 3D voxel filter to speed up the computation of loop closure
--- constraints.
-MAP_BUILDER.sparse_pose_graph.constraint_builder.adaptive_voxel_filter = TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter
-MAP_BUILDER.sparse_pose_graph.constraint_builder.min_score = 0.62
-MAP_BUILDER.sparse_pose_graph.constraint_builder.log_matches = true
+MAP_BUILDER.num_background_threads = 30
+
+MAX_3D_LASER_RANGE = 3.5
+TRAJECTORY_BUILDER_3D.laser_min_range = 0.1
+TRAJECTORY_BUILDER_3D.laser_max_range = MAX_3D_LASER_RANGE
+TRAJECTORY_BUILDER_3D.low_resolution_adaptive_voxel_filter.max_range = MAX_3D_LASER_RANGE
+TRAJECTORY_BUILDER_3D.low_resolution_adaptive_voxel_filter.min_num_points = 500
+TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter.max_range = MAX_3D_LASER_RANGE
+TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter.min_num_points = 250
+TRAJECTORY_BUILDER_3D.submaps.high_resolution_max_range = MAX_3D_LASER_RANGE
+
+TRAJECTORY_BUILDER_3D.motion_filter.max_time_seconds = 0.25
+TRAJECTORY_BUILDER_3D.motion_filter.max_angle_radians = math.rad(0.1)
+TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.035
+TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.2
+
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_cost_functor_weight_0 = 10.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_cost_functor_weight_1 = 15.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.previous_pose_translation_delta_cost_functor_weight = 4.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.initial_pose_estimate_rotation_delta_cost_functor_weight = 1e3
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.covariance_scale = 1e-3
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.only_optimize_yaw = true
+
+SPARSE_POSE_GRAPH.constraint_builder.sampling_ratio = 0.2
+SPARSE_POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 10
+SPARSE_POSE_GRAPH.constraint_builder.adaptive_voxel_filter = TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter
+SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.48
+SPARSE_POSE_GRAPH.constraint_builder.log_matches = true
+SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_rotational_score = 0.
+SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 2.
+
+SPARSE_POSE_GRAPH.optimization_problem.huber_scale = 1e1
+SPARSE_POSE_GRAPH.optimization_problem.acceleration_scale = 1e-1
+SPARSE_POSE_GRAPH.optimization_problem.rotation_scale = 1e3
 
 TRAJECTORY_BUILDER_3D.scans_per_accumulation = 1
 

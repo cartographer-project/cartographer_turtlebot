@@ -30,11 +30,14 @@
     <remap from="imu_out" to="/imu" />
   </node>
 
+  <node name="dropper" pkg="topic_tools" type="drop"
+        args="/camera/depth/image_raw 1 2" />
+
   <node pkg="nodelet" type="nodelet" name="image_processing_manager"
         args="manager" />
   <node pkg="nodelet" type="nodelet" name="metricizer"
         args="load depth_image_proc/convert_metric image_processing_manager">
-    <remap from="image_raw" to="/camera/depth/image_raw" />
+    <remap from="image_raw" to="/camera/depth/image_raw_drop" />
     <remap from="image" to="/image" />
   </node>
   <node pkg="nodelet" type="nodelet" name="rectifier"
