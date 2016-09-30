@@ -71,6 +71,7 @@ this case ``~/Downloads``, and use ``roslaunch`` to bring up the demo:
 
   .. code-block:: bash
 
+    # Download the example bag.
     wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/turtlebot/cartographer_turtlebot_demo.bag
 
     # Launch the 2D LIDAR demo.
