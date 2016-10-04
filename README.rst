@@ -22,9 +22,9 @@ Purpose
 =======
 
 `Cartographer`_ is a system that provides real-time simultaneous localization
-and mapping `SLAM`_ across multiple platforms and sensor configurations. This
-repository provides Cartographer SLAM for `TurtleBots`_ via
-`Cartographer ROS`_.
+and mapping `SLAM`_ in 2D and 3D across multiple platforms and sensor
+configurations. This repository provides Cartographer SLAM for `TurtleBots`_
+via `Cartographer ROS`_.
 
 .. _Cartographer: https://github.com/googlecartographer/cartographer
 .. _Cartographer ROS: https://github.com/googlecartographer/cartographer_ros
@@ -43,9 +43,9 @@ Contributing
 ============
 
 You can find information about contributing to Cartographer ROS's TurtleBot
-support at our `Contribution page`_.
+support at `our Contribution page`_.
 
-.. _Contribution page: https://github.com/googlecartographer/cartographer_turtlebot/blob/master/CONTRIBUTING.md
+.. _our Contribution page: https://github.com/googlecartographer/cartographer_turtlebot/blob/master/CONTRIBUTING.md
 
 .. |build| image:: https://travis-ci.org/googlecartographer/cartographer_turtlebot.svg?branch=master
     :alt: Build Status
