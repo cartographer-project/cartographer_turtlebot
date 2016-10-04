@@ -72,6 +72,4 @@ SPARSE_POSE_GRAPH.optimization_problem.huber_scale = 1e1
 SPARSE_POSE_GRAPH.optimization_problem.acceleration_scale = 1e-1
 SPARSE_POSE_GRAPH.optimization_problem.rotation_scale = 1e3
 
-TRAJECTORY_BUILDER_3D.scans_per_accumulation = 1
-
 return options
