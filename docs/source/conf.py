@@ -255,7 +255,7 @@ man_pages = [
 texinfo_documents = [
     ('index', 'CartographerTurtlebot', u'Cartographer ROS for TurtleBots Documentation',
      u'The Cartographer Authors', 'Cartographer ROS for TurtleBots',
-     'Provides ROS integration for Cartographer.', 'Miscellaneous'),
+     'Provides TurtleBot integration for Cartographer ROS.', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.
