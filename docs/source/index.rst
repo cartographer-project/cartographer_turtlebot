@@ -21,9 +21,9 @@ Cartographer ROS for TurtleBots
    :hidden:
 
 `Cartographer`_ is a system that provides real-time simultaneous localization
-and mapping `SLAM`_ across multiple platforms and sensor configurations. This
-repository provides Cartographer SLAM for `TurtleBots`_ via
-`Cartographer ROS`_.
+and mapping (`SLAM`_) in 2D and 3D across multiple platforms and sensor
+configurations. This repository provides Cartographer SLAM for `TurtleBots`_
+via `Cartographer ROS`_.
 
 .. _Cartographer: https://github.com/googlecartographer/cartographer
 .. _Cartographer ROS: https://github.com/googlecartographer/cartographer_ros
