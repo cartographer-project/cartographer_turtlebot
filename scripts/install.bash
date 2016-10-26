@@ -29,7 +29,6 @@ wstool init src
 mv ../cartographer_turtlebot src
 
 # Install rosdep dependencies.
-rosdep init
 rosdep update
 rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 
