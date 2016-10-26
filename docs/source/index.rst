@@ -55,6 +55,7 @@ using `Ninja <https://ninja-build.org>`_.
     wstool update -t src
 
     # Install deb dependencies.
+    rosdep init
     rosdep update
     rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 
