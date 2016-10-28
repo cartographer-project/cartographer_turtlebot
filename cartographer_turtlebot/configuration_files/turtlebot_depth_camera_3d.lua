@@ -54,10 +54,10 @@ TRAJECTORY_BUILDER_3D.motion_filter.max_angle_radians = math.rad(0.1)
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.035
 TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.2
 
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_cost_functor_weight_0 = 10.
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_cost_functor_weight_1 = 15.
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.previous_pose_translation_delta_cost_functor_weight = 4.
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.initial_pose_estimate_rotation_delta_cost_functor_weight = 1e3
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_0 = 10.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_1 = 15.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 4.
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 1e3
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.covariance_scale = 1e-3
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.only_optimize_yaw = true
 
@@ -70,7 +70,7 @@ SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_rotati
 SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 2.
 
 SPARSE_POSE_GRAPH.optimization_problem.huber_scale = 1e1
-SPARSE_POSE_GRAPH.optimization_problem.acceleration_scale = 1e-1
-SPARSE_POSE_GRAPH.optimization_problem.rotation_scale = 1e3
+SPARSE_POSE_GRAPH.optimization_problem.acceleration_weight = 1e-1
+SPARSE_POSE_GRAPH.optimization_problem.rotation_weight = 1e3
 
 return options
