@@ -17,9 +17,6 @@ include "map_builder.lua"
 options = {
   map_builder = MAP_BUILDER,
   sensor_bridge = {
-    horizontal_laser_min_range = 0.1,
-    horizontal_laser_max_range = 8.,
-    horizontal_laser_missing_echo_ray_length = 5.,
     constant_odometry_translational_variance = 1e-7,
     constant_odometry_rotational_variance = 1e-7,
   },
@@ -38,6 +35,10 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_2d = true
+
+TRAJECTORY_BUILDER_2D.laser_min_range = 0.1,
+TRAJECTORY_BUILDER_2D.laser_max_range = 8.,
+TRAJECTORY_BUILDER_2D.laser_missing_echo_ray_length = 5.,
 TRAJECTORY_BUILDER_2D.use_imu_data = true
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.1)
