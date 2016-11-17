@@ -1,5 +1,4 @@
 google_binary(cartographer_flat_world_imu_node
-  USES_ROS
   SRCS
     flat_world_imu_node_main.cc
 )
