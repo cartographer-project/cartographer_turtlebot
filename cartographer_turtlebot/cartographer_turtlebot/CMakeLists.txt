@@ -1,3 +1,9 @@
+google_test(configuration_files_test
+  USES_CARTOGRAPHER
+  SRCS
+    configuration_files_test.cc
+)
+
 google_binary(cartographer_flat_world_imu_node
   SRCS
     flat_world_imu_node_main.cc

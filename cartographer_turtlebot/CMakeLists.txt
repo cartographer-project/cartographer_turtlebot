@@ -17,15 +17,19 @@ cmake_minimum_required(VERSION 2.8.3)
 project(cartographer_turtlebot)
 
 set(PACKAGE_DEPENDENCIES
+  cartographer_ros
   roscpp
+  roslib
   sensor_msgs
 )
 
 find_package(cartographer REQUIRED)
 include("${CARTOGRAPHER_CMAKE_DIR}/functions.cmake")
 google_initialize_cartographer_project()
+google_enable_testing()
 
 find_package(catkin REQUIRED COMPONENTS ${PACKAGE_DEPENDENCIES})
+include_directories(${catkin_INCLUDE_DIRS})
 
 catkin_package(CATKIN_DEPENDS message_runtime ${PACKAGE_DEPENDENCIES})
 
