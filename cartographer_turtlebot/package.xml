@@ -39,6 +39,7 @@
   <depend>message_runtime</depend>
   <depend>openni2_launch</depend>
   <depend>roscpp</depend>
+  <depend>roslib</depend>
   <depend>sensor_msgs</depend>
   <depend>turtlebot_bringup</depend>
   <depend>urg_node</depend>
