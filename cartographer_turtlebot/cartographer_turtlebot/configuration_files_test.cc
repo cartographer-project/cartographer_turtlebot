@@ -36,7 +36,7 @@ TEST_P(ConfigurationFilesTest, ValidateNodeOptions) {
                             "/configuration_files"});
     const string code = file_resolver->GetFileContentOrDie(GetParam());
     ::cartographer::common::LuaParameterDictionary lua_parameter_dictionary(
-        code, std::move(file_resolver), nullptr);
+        code, std::move(file_resolver));
     ::cartographer_ros::CreateNodeOptions(&lua_parameter_dictionary);
   });
 }
