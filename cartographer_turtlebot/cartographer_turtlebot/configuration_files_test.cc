@@ -31,8 +31,9 @@ class ConfigurationFilesTest : public ::testing::TestWithParam<const char*> {};
 TEST_P(ConfigurationFilesTest, ValidateNodeOptions) {
   EXPECT_NO_FATAL_FAILURE({
     auto file_resolver = ::cartographer::common::make_unique<
-        ::cartographer::common::ConfigurationFileResolver>(std::vector<string>{
-        ::ros::package::getPath("cartographer_turtlebot") + "/configuration_files"});
+        ::cartographer::common::ConfigurationFileResolver>(
+        std::vector<string>{::ros::package::getPath("cartographer_turtlebot") +
+                            "/configuration_files"});
     const string code = file_resolver->GetFileContentOrDie(GetParam());
     ::cartographer::common::LuaParameterDictionary lua_parameter_dictionary(
         code, std::move(file_resolver), nullptr);
