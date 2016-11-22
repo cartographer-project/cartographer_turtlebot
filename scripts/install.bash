@@ -43,6 +43,7 @@ export BUILD_FLAGS="--use-ninja
                     --install-space /opt/cartographer_turtlebot
                     --install"
 catkin_make_isolated ${BUILD_FLAGS}
+catkin_make_isolated ${BUILD_FLAGS} --catkin-make-args run_tests
 
 # Clean up.
 cd ..
