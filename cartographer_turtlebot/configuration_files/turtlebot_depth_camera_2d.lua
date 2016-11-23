@@ -36,13 +36,17 @@ TRAJECTORY_BUILDER_2D.laser_min_range = 0.1
 TRAJECTORY_BUILDER_2D.laser_max_range = 4.0
 TRAJECTORY_BUILDER_2D.laser_missing_echo_ray_length = 2.0
 TRAJECTORY_BUILDER_2D.use_imu_data = true
-TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
-TRAJECTORY_BUILDER_2D.motion_filter.max_time_seconds = 0.25
-TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.1)
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.covariance_scale = 1e-2
-TRAJECTORY_BUILDER_2D.submaps.num_laser_fans = 300
+TRAJECTORY_BUILDER_2D.motion_filter.max_time_seconds = 0.3
+TRAJECTORY_BUILDER_2D.motion_filter.max_distance_meters = 0.2
+TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(3.)
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 70
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 300
 
-SPARSE_POSE_GRAPH.optimize_every_n_scans = 300
-SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.8
+TRAJECTORY_BUILDER_2D.submaps.resolution = 0.035
+TRAJECTORY_BUILDER_2D.submaps.num_laser_fans = 120
+SPARSE_POSE_GRAPH.optimize_every_n_scans = 120
+SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.82
+SPARSE_POSE_GRAPH.constraint_builder.sampling_ratio = 1.
+SPARSE_POSE_GRAPH.constraint_builder.ceres_scan_matcher.covariance_scale = 3e-5
 
 return options
