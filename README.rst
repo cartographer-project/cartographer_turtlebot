@@ -16,7 +16,7 @@
 Cartographer ROS for TurtleBots
 ===============================
 
-|build| |docs|
+|build| |docs| |license|
 
 Purpose
 =======
@@ -56,3 +56,7 @@ support at `our Contribution page`_.
     :alt: Documentation Status
     :scale: 100%
     :target: https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/?badge=latest
+.. |license| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
+     :alt: Apache 2 license.
+     :scale: 100%
+     :target: https://github.com/googlecartographer/cartographer_turtlebot/blob/master/LICENSE
