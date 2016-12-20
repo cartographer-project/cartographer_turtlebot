@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copyright 2016 The Cartographer Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-sudo: required
-services: docker
-
 # Cache intermediate Docker layers. For a description of how this works, see:
 # https://giorgos.sealabs.net/docker-cache-on-travis-and-docker-112.html
-cache:
-  directories:
-    - /home/travis/docker/
 
-env:
-  - ROS_RELEASE=indigo DOCKER_CACHE_FILE=/home/travis/docker/indigo-cache.tar.gz
-  - ROS_RELEASE=kinetic DOCKER_CACHE_FILE=/home/travis/docker/kinetic-cache.tar.gz
+set -o errexit
+set -o verbose
+set -o pipefail
 
-before_install: scripts/load_docker_cache.sh
-
-install: true
-script:
-  - git clone https://github.com/googlecartographer/cartographer_ros.git
-  - docker build cartographer_ros -t cartographer_ros:${ROS_RELEASE} -f cartographer_ros/Dockerfile.${ROS_RELEASE}
-  - docker build ${TRAVIS_BUILD_DIR} -t cartographer_turtlebot:${ROS_RELEASE} -f Dockerfile.${ROS_RELEASE}
-  - scripts/save_docker_cache.sh
+if [[ ${TRAVIS_BRANCH} == "master" ]] &&
+    [[ ${TRAVIS_PULL_REQUEST} == "false" ]]; then
+  mkdir -p $(dirname ${DOCKER_CACHE_FILE});
+  docker save $(docker history -q cartographer_turtlebot:${ROS_RELEASE} |
+      grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE};
+fi
