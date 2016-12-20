@@ -43,4 +43,6 @@
   <depend>sensor_msgs</depend>
   <depend>turtlebot_bringup</depend>
   <depend>urg_node</depend>
+
+  <test_depend>rosunit</test_depend>
 </package>
