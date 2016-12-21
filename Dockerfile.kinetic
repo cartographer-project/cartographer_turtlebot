@@ -13,6 +13,23 @@
 # limitations under the License.
 
 FROM cartographer_ros:kinetic
+
+# First, we invalidate the entire cache if googlecartographer/cartographer_ros has
+# changed. This file's content changes whenever master changes. See:
+# http://stackoverflow.com/questions/36996046/how-to-prevent-dockerfile-caching-git-clone
+ADD https://api.github.com/repos/googlecartographer/cartographer_ros/git/refs/heads/master \
+    cartographer_ros/cartographer_version.json
+
 COPY . cartographer_turtlebot
-RUN cartographer_turtlebot/scripts/install.bash
+
+RUN cartographer_turtlebot/scripts/prepare_catkin_workspace.sh
+RUN cartographer_turtlebot/scripts/install_debs.sh && rm -rf /var/lib/apt/lists/*
+RUN cartographer_turtlebot/scripts/install.sh --pkg cartographer_turtlebot && \
+    cartographer_turtlebot/scripts/install.sh --pkg cartographer_turtlebot \
+        --catkin-make-args run_tests && \
+    cartographer_turtlebot/scripts/catkin_test_results.sh build_isolated/cartographer_turtlebot
+
 COPY scripts/ros_entrypoint.sh /
+# A BTRFS bug may prevent us from cleaning up these directories.
+# https://btrfs.wiki.kernel.org/index.php/Problem_FAQ#I_cannot_delete_an_empty_directory
+RUN rm -rf cartographer_turtlebot catkin_ws || true
