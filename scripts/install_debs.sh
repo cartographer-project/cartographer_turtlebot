@@ -22,7 +22,7 @@ set -o verbose
 
 cd catkin_ws
 
-sudo apt-get update
+apt-get update
 
 # Install rosdep dependencies.
 rosdep update
