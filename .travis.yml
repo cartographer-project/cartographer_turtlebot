@@ -31,5 +31,6 @@ install: true
 script:
   - git clone https://github.com/googlecartographer/cartographer_ros.git
   - docker build cartographer_ros -t cartographer_ros:${ROS_RELEASE} -f cartographer_ros/Dockerfile.${ROS_RELEASE}
+  - rm -rf cartographer_ros
   - docker build ${TRAVIS_BUILD_DIR} -t cartographer_turtlebot:${ROS_RELEASE} -f Dockerfile.${ROS_RELEASE}
   - scripts/save_docker_cache.sh
