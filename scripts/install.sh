@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Copyright 2016 The Cartographer Authors
 #
@@ -17,20 +17,10 @@
 set -o errexit
 set -o verbose
 
-sudo apt-get update
+. /opt/ros/${ROS_DISTRO}/setup.sh
+. /opt/cartographer_ros/setup.sh
 
-source /ros_entrypoint.sh
-
-# Create a new workspace in 'catkin_ws'.
-mkdir catkin_ws
 cd catkin_ws
-wstool init src
-
-mv ../cartographer_turtlebot src
-
-# Install rosdep dependencies.
-rosdep update
-rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 
 # Build, install, and test.
 #
@@ -38,13 +28,6 @@ rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 # 'catkin_make_isolated' in order to avoid the use of 'devel_isolated' as the
 # 'CMAKE_INSTALL_PREFIX' for non-test targets. This in itself is important to
 # avoid any issues caused by using 'CMAKE_INSTALL_PREFIX' during the
-# configuration phase of the build.
-export BUILD_FLAGS="--use-ninja
-                    --install-space /opt/cartographer_turtlebot
-                    --install"
-catkin_make_isolated ${BUILD_FLAGS}
-catkin_make_isolated ${BUILD_FLAGS} --catkin-make-args run_tests
-
-# Clean up.
-cd ..
-rm -rf catkin_ws /var/lib/apt/lists/*
+# configuration phase of the build (e.g. cartographer/common/config.h.cmake).
+export BUILD_FLAGS="--use-ninja --install-space /opt/cartographer_turtlebot --install"
+catkin_make_isolated ${BUILD_FLAGS} $@
