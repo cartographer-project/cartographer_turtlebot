@@ -34,9 +34,9 @@ options = {
 
 MAP_BUILDER.use_trajectory_builder_2d = true
 
-TRAJECTORY_BUILDER_2D.laser_min_range = 0.1
-TRAJECTORY_BUILDER_2D.laser_max_range = 4.0
-TRAJECTORY_BUILDER_2D.laser_missing_echo_ray_length = 2.0
+TRAJECTORY_BUILDER_2D.min_range = 0.1
+TRAJECTORY_BUILDER_2D.max_range = 4.0
+TRAJECTORY_BUILDER_2D.missing_data_ray_length = 2.0
 TRAJECTORY_BUILDER_2D.use_imu_data = true
 TRAJECTORY_BUILDER_2D.motion_filter.max_time_seconds = 0.3
 TRAJECTORY_BUILDER_2D.motion_filter.max_distance_meters = 0.2
