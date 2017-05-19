@@ -24,6 +24,7 @@ set -o pipefail
 if [[ ${TRAVIS_BRANCH} == "master" ]] &&
     [[ ${TRAVIS_PULL_REQUEST} == "false" ]]; then
   mkdir -p $(dirname ${DOCKER_CACHE_FILE});
-  docker save $(docker history -q cartographer_turtlebot:${ROS_RELEASE} |
-      grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE};
+  IMAGE_NAMES=$(docker history -q cartographer_turtlebot:${ROS_RELEASE} | grep -v '<missing>')
+  docker save ${IMAGE_NAMES} | gzip > ${DOCKER_CACHE_FILE}.new
+  mv ${DOCKER_CACHE_FILE}.new ${DOCKER_CACHE_FILE}
 fi
