@@ -49,6 +49,5 @@ TRAJECTORY_BUILDER_2D.submaps.num_range_data = 120
 SPARSE_POSE_GRAPH.optimize_every_n_scans = 120
 SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.82
 SPARSE_POSE_GRAPH.constraint_builder.sampling_ratio = 1.
-SPARSE_POSE_GRAPH.constraint_builder.ceres_scan_matcher.covariance_scale = 3e-5
 
 return options
