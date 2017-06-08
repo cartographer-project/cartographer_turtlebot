@@ -41,7 +41,8 @@ int main(int argc, char** argv) {
             // The 'imu_data_raw' topic of the Kobuki base will at times publish
             // IMU messages out of order. These out of order messages must be
             // dropped.
-            if (last_published_time.isZero() || imu_in->header.stamp > last_published_time) {
+            if (last_published_time.isZero() ||
+                imu_in->header.stamp > last_published_time) {
               last_published_time = imu_in->header.stamp;
               sensor_msgs::Imu imu_out = *imu_in;
               // TODO(damonkohler): This relies on the z-axis alignment of the
