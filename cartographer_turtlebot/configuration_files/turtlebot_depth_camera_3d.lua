@@ -55,7 +55,6 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_1 = 15.
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 4.
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 1e3
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.only_optimize_yaw = true
-TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.scan_matcher_variance = 1e-8
 
 SPARSE_POSE_GRAPH.constraint_builder.sampling_ratio = 0.2
 SPARSE_POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 10
