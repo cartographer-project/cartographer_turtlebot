@@ -59,7 +59,6 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.only_optimize_yaw = true
 
 SPARSE_POSE_GRAPH.constraint_builder.sampling_ratio = 0.2
 SPARSE_POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 10
-SPARSE_POSE_GRAPH.constraint_builder.adaptive_voxel_filter = TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter
 SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.48
 SPARSE_POSE_GRAPH.constraint_builder.log_matches = true
 SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_rotational_score = 0.
