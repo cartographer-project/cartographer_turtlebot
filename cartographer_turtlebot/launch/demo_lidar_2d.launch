@@ -23,7 +23,8 @@
               $(find cartographer_turtlebot)/configuration_files
           -configuration_basename turtlebot_urg_lidar_2d.lua"
       output="screen">
-    <remap from="scan" to="/laser_scan" />
+<remap from="scan" to="/scan" />
+
   </node>
 
   <node name="flat_world_imu_node" pkg="cartographer_turtlebot"
@@ -37,7 +38,4 @@
           )/configuration_files/demo_turtlebot.rviz" />
   <node name="playbag" pkg="rosbag" type="play"
       args="--clock $(arg bag_filename)" />
-
-  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-      type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
 </launch>
