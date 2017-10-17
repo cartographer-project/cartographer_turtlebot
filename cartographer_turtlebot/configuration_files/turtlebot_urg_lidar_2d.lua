@@ -15,6 +15,9 @@
 include "map_builder.lua"
 include "trajectory_builder.lua"
 
+NUM_SUBDIVISIONS = 20
+NUM_RANGE_DATA = 90
+
 options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
@@ -26,7 +29,7 @@ options = {
   use_odometry = true,
   num_laser_scans = 1,
   num_multi_echo_laser_scans = 0,
-  num_subdivisions_per_laser_scan = 1,
+  num_subdivisions_per_laser_scan = NUM_SUBDIVISIONS,
   num_point_clouds = 0,
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.3,
@@ -39,14 +42,24 @@ options = {
 
 MAP_BUILDER.use_trajectory_builder_2d = true
 
+TRAJECTORY_BUILDER_2D.scans_per_accumulation = NUM_SUBDIVISIONS
 TRAJECTORY_BUILDER_2D.min_range = 0.1
 TRAJECTORY_BUILDER_2D.max_range = 8.
 TRAJECTORY_BUILDER_2D.missing_data_ray_length = 5.
-TRAJECTORY_BUILDER_2D.use_imu_data = true
+TRAJECTORY_BUILDER_2D.use_imu_data = false
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.1)
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 15.
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 1e-2
+TRAJECTORY_BUILDER_2D.submaps.resolution = 0.05
+TRAJECTORY_BUILDER_2D.submaps.num_range_data = NUM_RANGE_DATA
 
-SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.65
-SPARSE_POSE_GRAPH.constraint_builder.global_localization_min_score = 0.7
+SPARSE_POSE_GRAPH.optimize_every_n_scans = NUM_RANGE_DATA
+SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.80
+SPARSE_POSE_GRAPH.constraint_builder.global_localization_min_score = 0.5
+SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher.linear_search_window = 6.
+SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher.angular_search_window = math.rad(20.)
+SPARSE_POSE_GRAPH.constraint_builder.max_constraint_distance = 5.
+
 
 return options
