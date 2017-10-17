@@ -17,26 +17,17 @@
 <launch>
   <param name="/use_sim_time" value="true" />
 
-  <node name="cartographer_node" pkg="cartographer_ros"
-      type="cartographer_node" args="
-          -configuration_directory
-              $(find cartographer_turtlebot)/configuration_files
-          -configuration_basename turtlebot_urg_lidar_2d.lua"
-      output="screen">
-  </node>
-
-  <node name="flat_world_imu_node" pkg="cartographer_turtlebot"
-      type="cartographer_flat_world_imu_node" output="screen">
-    <remap from="imu_in" to="/mobile_base/sensors/imu_data_raw" />
-    <remap from="imu_out" to="/imu" />
-  </node>
-
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find cartographer_turtlebot
           )/configuration_files/demo_turtlebot.rviz" />
-  <node name="playbag" pkg="rosbag" type="play"
-      args="--clock $(arg bag_filename) -r 3." />
     
+  <node name="cartographer_offline_node" pkg="cartographer_ros"
+      type="cartographer_offline_node" args="
+          -configuration_directory $(find cartographer_turtlebot)/configuration_files
+          -configuration_basename turtlebot_urg_lidar_2d.lua
+          -bag_filenames $(arg bag_filename)"
+      output="screen">
+  </node>
 
   <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
       type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
