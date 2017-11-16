@@ -60,15 +60,15 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 4.
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 1e3
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.only_optimize_yaw = true
 
-SPARSE_POSE_GRAPH.constraint_builder.sampling_ratio = 0.2
-SPARSE_POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 10
-SPARSE_POSE_GRAPH.constraint_builder.min_score = 0.48
-SPARSE_POSE_GRAPH.constraint_builder.log_matches = true
-SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_rotational_score = 0.
-SPARSE_POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 2.
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.2
+POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 10
+POSE_GRAPH.constraint_builder.min_score = 0.48
+POSE_GRAPH.constraint_builder.log_matches = true
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.min_rotational_score = 0.
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 2.
 
-SPARSE_POSE_GRAPH.optimization_problem.huber_scale = 1e1
-SPARSE_POSE_GRAPH.optimization_problem.acceleration_weight = 1e-1
-SPARSE_POSE_GRAPH.optimization_problem.rotation_weight = 1e3
+POSE_GRAPH.optimization_problem.huber_scale = 1e1
+POSE_GRAPH.optimization_problem.acceleration_weight = 1e-1
+POSE_GRAPH.optimization_problem.rotation_weight = 1e3
 
 return options
