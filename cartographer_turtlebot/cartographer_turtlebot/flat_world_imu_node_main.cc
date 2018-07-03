@@ -47,6 +47,8 @@ int main(int argc, char** argv) {
               sensor_msgs::Imu imu_out = *imu_in;
               // TODO(damonkohler): This relies on the z-axis alignment of the
               // IMU with the Kobuki base.
+              imu_out.angular_velocity.x = 0.;
+              imu_out.angular_velocity.y = 0.;
               imu_out.linear_acceleration.x = 0.;
               imu_out.linear_acceleration.y = 0.;
               imu_out.linear_acceleration.z = kFakeGravity;
