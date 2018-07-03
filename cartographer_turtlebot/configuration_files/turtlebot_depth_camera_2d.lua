@@ -54,7 +54,7 @@ TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(3.)
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 70
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 300
 
-TRAJECTORY_BUILDER_2D.submaps.resolution = 0.035
+TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.035
 TRAJECTORY_BUILDER_2D.submaps.num_range_data = 120
 POSE_GRAPH.optimize_every_n_nodes = 120
 POSE_GRAPH.constraint_builder.min_score = 0.82
